@@ -9,16 +9,25 @@
       <stop offset="100%" style="stop-color:#C8956C"/>
     </linearGradient>
   </defs>
+  <!-- Rounded square background -->
   <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Gift box body -->
   <rect x="106" y="256" width="300" height="190" rx="16" fill="#2B4470" stroke="#D4A853" stroke-width="6"/>
+  <!-- Gift box lid -->
   <rect x="90" y="206" width="332" height="64" rx="14" fill="#2B4470" stroke="#D4A853" stroke-width="6"/>
+  <!-- Vertical ribbon -->
   <rect x="237" y="206" width="38" height="240" fill="url(#ribbon)" rx="4"/>
+  <!-- Horizontal ribbon -->
   <rect x="90" y="222" width="332" height="34" fill="url(#ribbon)" rx="4"/>
+  <!-- Bow left -->
   <ellipse cx="218" cy="178" rx="48" ry="38" fill="none" stroke="#D4A853" stroke-width="8" transform="rotate(-20, 218, 178)"/>
   <ellipse cx="218" cy="178" rx="48" ry="38" fill="#D4A853" opacity="0.3" transform="rotate(-20, 218, 178)"/>
+  <!-- Bow right -->
   <ellipse cx="294" cy="178" rx="48" ry="38" fill="none" stroke="#D4A853" stroke-width="8" transform="rotate(20, 294, 178)"/>
   <ellipse cx="294" cy="178" rx="48" ry="38" fill="#D4A853" opacity="0.3" transform="rotate(20, 294, 178)"/>
+  <!-- Bow center knot -->
   <circle cx="256" cy="192" r="18" fill="#D4A853"/>
   <circle cx="256" cy="192" r="12" fill="#C8956C"/>
+  <!-- Checkmark on box -->
   <polyline points="210,340 245,375 310,300" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
 </svg>
