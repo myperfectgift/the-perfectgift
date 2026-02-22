@@ -10,4 +10,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://the-perfectgift.org/sitemap.xml
+Sitemap: https://www.the-perfectgift.org/sitemap.xml
