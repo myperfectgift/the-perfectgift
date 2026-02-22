@@ -14,11 +14,11 @@ echo "=========================================="
 echo ""
 
 # Get project details
-read -p "Site Name (e.g. 'My Balance'): " SITE_NAME
-read -p "Domain (e.g. 'mybalance.store'): " SITE_DOMAIN
-read -p "Logo Initials - 2 chars (e.g. 'MB'): " SITE_INITIALS
-read -p "Vercel subdomain (e.g. 'my-balance'): " VERCEL_SUB
-read -p "Project slug for package.json (e.g. 'my-balance'): " PROJECT_SLUG
+read -p "Site Name (---------'): " SITE_NAME
+read -p "Domain (----------): " SITE_DOMAIN
+read -p "Logo Initials - 2 chars (e.g. --): " SITE_INITIALS
+read -p "Vercel subdomain (-------): " VERCEL_SUB
+read -p "Project slug for package.json (---------): " PROJECT_SLUG
 echo ""
 read -p "Google verification code (or press Enter to skip): " GOOGLE_CODE
 read -p "Bing verification code (or press Enter to skip): " BING_CODE
